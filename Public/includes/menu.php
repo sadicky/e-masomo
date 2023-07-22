@@ -31,7 +31,7 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>reparables" class="nk-menu-link">
+                                    <a href="<?=WEBROOT?>devices" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-mobile"></em></span>
                                         <span class="nk-menu-text">Appareils Réparables</span>
                                     </a>

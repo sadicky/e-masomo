@@ -26,5 +26,15 @@
 		$getBrands = $brand->getBrands();	
 	    include('Vues/Admin/brands.php');
 	}
+	function Devices(){
+		require_once('Models/Admin/brand.class.php');
+		require_once('Models/Admin/device.class.php');
+		$brand = new Brand();		
+		$device = new Device();	
+		$getBrands = $brand->getBrands();
+		$getDevices = $device->getDevices();
+	    include('Vues/Admin/devices.php');
+	}
+
 
 

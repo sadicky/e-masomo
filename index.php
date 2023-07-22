@@ -32,6 +32,10 @@ if(isset($_GET['p'])){
 	{
 		Brands();
 	}
+	else if($_GET['p']=='devices')
+	{
+		Devices();
+	}
 	//pour la page non trouvee
 	else{
 		error404();
