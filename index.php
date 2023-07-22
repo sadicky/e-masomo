@@ -36,6 +36,10 @@ if(isset($_GET['p'])){
 	{
 		Devices();
 	}
+	else if($_GET['p']=='defects')
+	{
+		Defect();
+	}
 	//pour la page non trouvee
 	else{
 		error404();

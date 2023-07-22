@@ -35,6 +35,16 @@
 		$getDevices = $device->getDevices();
 	    include('Vues/Admin/devices.php');
 	}
+	function Defect(){
+		require_once('Models/Admin/defect.class.php');
+		require_once('Models/Admin/device.class.php');
+		$defects = new Defect();		
+		$device = new Device();	
+		$getDefects = $defects->getDefects();
+		$getDevices = $device->getDevices();
+	    include('Vues/Admin/defects.php');
+	}
+
 
 
 
