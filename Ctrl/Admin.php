@@ -90,6 +90,7 @@
 	
 	function Orders(){
 		if(@$_SESSION['logged']){
+			include 'Models/Admin/barcode.php';
 			require_once('Models/Admin/order.class.php');
 			require_once('Models/Admin/brand.class.php');
 			require_once('Models/Admin/device.class.php');
@@ -107,6 +108,7 @@
 				include('Vues/Admin/error500.php');
 			}
 	}
+
 	function Users(){
 		if(@$_SESSION['logged']){
 			require_once('Models/Admin/user.class.php');
@@ -156,6 +158,28 @@
 			}
 	}
 
+	
+	function Order(){
+		if(@$_SESSION['logged']){
+			include 'Models/Admin/barcode.php';
+			require_once('Models/Admin/order.class.php');
+			require_once('Models/Admin/brand.class.php');
+			require_once('Models/Admin/device.class.php');
+			require_once('Models/Admin/defect.class.php');	
+			$id = $_GET['id'];
+			$defects = new Defect();		
+			$device = new Device();	
+			$brand = new Brand();	
+			$orders = new Repair();	
+			$getDefects = $defects->getDefects();
+			$getDevices = $device->getDevices();
+			$getBrands = $brand->getBrands();
+			$order = $orders->getOrder($id);	
+			include('Vues/Admin/order.php');
+		}else{			
+				include('Vues/Admin/error500.php');
+			}
+	}
 
 
 

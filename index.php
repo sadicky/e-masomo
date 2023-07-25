@@ -68,6 +68,10 @@ if(isset($_GET['p'])){
 	{
 		NewOrder();
 	}
+	else if($_GET['p']=='order')
+	{
+		Order();
+	}
 	//pour la page non trouvee
 	else{
 		error404();

@@ -1,7 +1,6 @@
 <?php 
 $title = 'Repair Order Information';
 include('Public/includes/header.php');
-include 'barcode128.php';
 ?>
 
 <style>
@@ -67,6 +66,7 @@ span { font-size: 13px;}
                                                 <table class="datatable-init-export nowrap table" data-export-title="Export">
                                                     <thead>
                                                         <tr class="tb-tnx-head">
+                                                            <th>BarCode</th>
                                                             <th>Device</th>
                                                             <th>Info</th>
                                                             <th>Tech</th>
@@ -78,22 +78,41 @@ span { font-size: 13px;}
                                                         <?php 
                                                         foreach ($getOrders as $order) : ?> 
                                                             <tr>
-                                                                <td>
+                                                                <td><?= $generator->getBarcode($order->uuid, $generator::TYPE_CODE_128);?></td>
+                                                                <td><a href="index.php?p=order&id=<?= $order->uuid ?>" class="btn-link">
                                                                     <span class="badge rounded-pill bg-primary"><?= $order->name_brand ?></span>
                                                                      <i> <?= $order->name ?> <?= $order->model ?></i>
+                                                                     </a>
                                                                 </td>
-                                                                <td>Order: <?= $order->order_id ?> | <b>#<?=$order->uuid?></b> | Serial Number: <i><?=$order->serial_number?></i><br>
-                                                                <span class="text text-primary"><?= $order->customer_name ?>(<?= $order->customer_tel ?>)</span>
+                                                                <td>Order: <?= $order->order_id ?> | <b><a href="<?=WEBROOT?>order" class="btn-link">#<?=$order->uuid?></a></b> | Serial Number: <i><?=$order->serial_number?></i><br>
+                                                                <span class="text text-primary"><?= $order->customer_name ?>(<?= $order->customer_tel ?>)</span><span class="text text-danger fw-bold" > - Total:<?= $order->price ?> Fbu</span>
                                                                 </td>
                                                                 <td>
                                                                     <b><?= $order->names ?></b>
                                                                 </td>
                                                                 <td>
-                                                                    <b><?= $order->body ?></b>
+                                                                    <?php
+                                                                            if($order->body=='Open'){
+                                                                                echo '<span class="text text-primary fw-bold">Open</span>';
+                                                                            }
+                                                                            else if($order->body=='Pending'){
+                                                                                echo '<span class="text text-warning fw-bold">Pending</span>';
+                                                                            }else if($order->body=='Resolved'){                                                                            
+                                                                                echo '<span class="text text-success fw-bold">Resolved</span>';
+                                                                            }else{
+                                                                                echo '<span class="text text-danger fw-bold">Closed</span>';
+                                                                            }
+                                                                                
+                                                                    ?>
                                                                 </td>
-                                                                <td>
-                                                                    <b><?= $order->payment_status ?></b>
-                                                                </td>
+                                                                <?php  
+                                                                        if($order->payment_status == 1){
+                                                                            echo '<td><span class="badge rounded-pill bg-success">Paid</span></td>';
+                                                                        }else{
+                                                                            echo '<td><span class="badge rounded-pill bg-danger">Unpaid</span></td>';
+                                                                        }
+                                                                   
+                                                                ?>
                                                             </tr>                                                        
                                                         <?php endforeach ?>
                                                     </tbody>

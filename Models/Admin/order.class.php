@@ -56,6 +56,17 @@ Class Repair
          return $tbP;
     }
 
+    public function getOrder($uuid)
+    {
+        $db = getConnection();
+    $statement = $db->prepare("SELECT * FROM tbl_repair_orders as o,tbl_defect as d,tbl_status as s,tbl_tech as t, tbl_brands as b,tbl_device as dv
+                              WHERE o.tech_id = t.tech_id and o.repair_status_id = s.status_id and o.defect_id = d.defect_id and d.device_id = dv.device_id 
+                              and dv.brand_id = b.brand_id and o.uuid = ?");
+        $statement->execute(array($uuid));
+        $tbP = $statement->fetchObject();
+         return $tbP;
+    }
+
     public function getUserEmail($email)
     {
         $db = getConnection();
