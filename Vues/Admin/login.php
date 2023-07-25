@@ -1,5 +1,5 @@
 <?php 
-$title = 'Page Not Found';
+$title = 'Login';
 include('Public/includes/header.php');
 ?>
 
@@ -28,13 +28,13 @@ include('Public/includes/header.php');
                                         <h5 class="nk-block-title">Sign-In</h5>
                                     </div>
                                 </div><!-- .nk-block-head -->
-                                <form action="#" class="form-validate is-alter" autocomplete="off">
+                                <form method="POST" id="login_form" class="form-validate is-alter" autocomplete="off">
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <label class="form-label" for="email-address">Username</label>
                                         </div>
                                         <div class="form-control-wrap">
-                                            <input autocomplete="off" type="text" class="form-control form-control-lg" required id="email-address" placeholder="Enter your email address or username">
+                                            <input autocomplete="off" type="text" id="username" name="username" class="form-control form-control-lg" required placeholder="Enter your username">
                                         </div>
                                     </div><!-- .form-group -->
                                     <div class="form-group">
@@ -46,13 +46,22 @@ include('Public/includes/header.php');
                                                 <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                                 <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                             </a>
-                                            <input autocomplete="new-password" type="password" class="form-control form-control-lg" required id="password" placeholder="Enter your passcode">
+                                            <input autocomplete="new-password" id="pwd" name="pwd"  type="password" class="form-control form-control-lg" required placeholder="Enter your passcode">
                                         </div>
                                     </div><!-- .form-group -->
                                     <div class="form-group">
                                         <button class="btn btn-lg btn-primary btn-block">Sign in</button>
                                     </div>
+                                <div>
+                                    <?php 
+                                    if (isset($msg)) {
+                                        // code...
+                                        echo $msg;
+                                    }
+                                     ?>
+                                </div>
                                 </form>
+     				 <div class='col-sm-12' id="message"></div>	
                             </div><!-- .nk-block -->
                         </div><!-- .nk-split-content -->
                         <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-toggle-body="true" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
@@ -61,11 +70,7 @@ include('Public/includes/header.php');
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
                                             <div class="nk-feature-img">
-                                                <img class="round" src="assets/images/slides/promo-a.png" srcset="assets/images/slides/promo-a2x.png 2x" alt="">
-                                            </div>
-                                            <div class="nk-feature-content py-4 p-sm-5">
-                                                <h4>Dashlite</h4>
-                                                <p>You can start to create your products easily with its user-friendly design & most completed responsive layout.</p>
+                                                <img class="round" src="assets/images/slides/p" srcset="assets/images/slides/promo-a2x.png 2x" alt="">
                                             </div>
                                         </div>
                                     </div><!-- .slider-item -->

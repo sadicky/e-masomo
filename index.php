@@ -40,6 +40,34 @@ if(isset($_GET['p'])){
 	{
 		Defect();
 	}
+	else if($_GET['p']=='users')
+	{
+		Users();
+	}
+	else if($_GET['p']=='status')
+	{
+		Status();
+	}
+	else if($_GET['p']=='technicians')
+	{
+		Technicians();
+	}
+	else if($_GET['p']=='marketters')
+	{
+		Marketters();
+	}
+	else if($_GET['p']=='orders')
+	{
+		Orders();
+	}
+	else if($_GET['p']=='logout')
+	{
+		Logout();
+	}
+	else if($_GET['p']=='neworder')
+	{
+		NewOrder();
+	}
 	//pour la page non trouvee
 	else{
 		error404();

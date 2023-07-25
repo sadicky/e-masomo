@@ -7,7 +7,7 @@ if($id)
 {
     $delete = $devices->deleteDevice($id);
 	if($delete)
-	echo "<script>window.lobrandsion.href='index.php?page=devices'</script>";
+	echo "<script>window.location.href='index.php?page=devices'</script>";
 	else echo "non ajoute";
 }
 	

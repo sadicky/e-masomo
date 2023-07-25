@@ -1,5 +1,5 @@
 <?php 
-$title = 'Page Not Found';
+$title = 'Not Connected';
 include('Public/includes/header.php');
 ?>
 <body class="nk-body bg-white npc-general pg-error">
@@ -12,10 +12,9 @@ include('Public/includes/header.php');
                 <div class="nk-content ">
                     <div class="nk-block nk-block-middle wide-xs mx-auto">
                         <div class="nk-block-content nk-error-ld text-center">
-                            <h1 class="nk-error-head">404</h1>
-                            <h3 class="nk-error-title">Page Not Found</h3>
-                            <p class="nk-error-text">We are very sorry for inconvenience. It looks like you’re try to access a page that either has been deleted or never existed.</p>
-                            <a href="<?=WEBROOT?>login" class="btn btn-lg btn-primary mt-2">Aller à l'Accueil</a>
+                            <h1 class="nk-error-head">500</h1>
+                            <h3 class="nk-error-title">Not Connected</h3>
+                           <a href="<?=WEBROOT?>login" class="btn btn-lg btn-primary mt-2">Login</a>
                         </div>
                     </div><!-- .nk-block -->
                 </div>

@@ -52,18 +52,10 @@
                                     <h6 class="overline-title text-primary-alt">administration</h6>
                                 </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                    <a href="<?=WEBROOT?>users" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-circle"></em></span>
                                         <span class="nk-menu-text">Utilisateurs</span>
                                     </a>
-                                    <ul class="nk-menu-sub">
-                                        <li class="nk-menu-item">
-                                            <a href="<?=WEBROOT?>users" class="nk-menu-link" target="_blank"><span class="nk-menu-text">List</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="<?=WEBROOT?>usernew" class="nk-menu-link" target="_blank"><span class="nk-menu-text">New</span></a>
-                                        </li>
-                                    </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
                                     <a href="<?=WEBROOT?>roles" class="nk-menu-link ">

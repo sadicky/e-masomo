@@ -8,7 +8,7 @@ if($id)
     $delete = $brands->deleteBrand($id);
 	if($delete)
 	echo "<script>
-	window.lobrandsion.href='index.php?page=articles'
+	window.location.href='index.php?page=articles'
 	</script>";
 	else echo "non ajoute";
 }

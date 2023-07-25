@@ -19,8 +19,11 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-md-block">
-                                                    <div class="user-status">Administrator</div>
-                                                    <div class="user-name dropdown-indicator">TUYISABE Espe</div>
+                                                    <div class="user-status"><?php 
+                                                        if($_SESSION['role']==1) echo "Administrator";
+                                                        else echo "user";
+                                                        ?></div>
+                                                    <div class="user-name dropdown-indicator"><?=$_SESSION['username']?></div>
                                                 </div>
                                             </div>
                                         </a>
@@ -31,20 +34,20 @@
                                                         <span>TU</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">TUYISABE Espérance</span>
-                                                        <span class="sub-text">tuyiespe@gmail.com</span>
+                                                        <span class="lead-text"><?=$_SESSION['username']?></span>
+                                                        <span class="sub-text"><?=$_SESSION['email']?></span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>Profile</span></a></li>
+                                                    <li><a href="<?=WEBROOT?>profile"><em class="icon ni ni-user-alt"></em><span>Profile</span></a></li>
                                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
                                                 </ul>
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                                    <li><a href="<?=WEBROOT?>logout"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
