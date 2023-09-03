@@ -9,6 +9,7 @@ $serial_number=isset($_POST['serial'])?$_POST['serial']:"";
 $defect_id=isset($_POST['defect'])?$_POST['defect']:""; 
 $diagnostic=isset($_POST['diag'])?$_POST['diag']:""; 
 $has_warranty=isset($_POST['warranty'])?$_POST['warranty']:""; 
+$ours=isset($_POST['ours'])?$_POST['ours']:""; 
 $tech_id=isset($_POST['tech'])?$_POST['tech']:""; 
 $total=isset($_POST['total'])?$_POST['total']:""; 
 $user_id=$_SESSION['id']; 
@@ -19,7 +20,7 @@ if(empty($customer_name)){
   ';
 }else{
  // $add = null;
- $add = $orders->setRepairOrder($customer_name,$customer_tel,$serial_number,$total,$defect_id,$diagnostic,$user_id,$has_warranty,$tech_id);
+ $add = $orders->setRepairOrder($customer_name,$customer_tel,$serial_number,$total,$defect_id,$diagnostic,$user_id,$has_warranty,$tech_id,$ours);
   if(!empty($add)){
 	echo "<span class='alert alert-pro alert-success alert-dismissible col-sm-12'>
              <div class='alert-text'>

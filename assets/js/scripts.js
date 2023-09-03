@@ -36,15 +36,8 @@
     NioApp.BreakClass('.' + _header_menu, _break.lg, {
       timeOut: 0
     });
-    NioApp.BreakClass('.' + _sidebar, _break.lg, {
-      timeOut: 0,
-      classAdd: _sidebar_mob
-    });
     $win.on('resize', function () {
       NioApp.BreakClass('.' + _header_menu, _break.lg);
-      NioApp.BreakClass('.' + _sidebar, _break.lg, {
-        classAdd: _sidebar_mob
-      });
     });
   }; // Code Prettify @v1.0
 
@@ -205,10 +198,9 @@
         var $toggleCurrent = $(toggleCurrent),
             $s2c = $('.select2-container'),
             $dpd = $('.datepicker-dropdown'),
-            $tpc = $('.ui-timepicker-container'),
-            $mdl = $('.modal');
+            $tpc = $('.ui-timepicker-container');
 
-        if (!$toggleCurrent.is(e.target) && $toggleCurrent.has(e.target).length === 0 && !$contentD.is(e.target) && $contentD.has(e.target).length === 0 && !$s2c.is(e.target) && $s2c.has(e.target).length === 0 && !$dpd.is(e.target) && $dpd.has(e.target).length === 0 && !$tpc.is(e.target) && $tpc.has(e.target).length === 0 && !$mdl.is(e.target) && $mdl.has(e.target).length === 0) {
+        if (!$toggleCurrent.is(e.target) && $toggleCurrent.has(e.target).length === 0 && !$contentD.is(e.target) && $contentD.has(e.target).length === 0 && !$s2c.is(e.target) && $s2c.has(e.target).length === 0 && !$dpd.is(e.target) && $dpd.has(e.target).length === 0 && !$tpc.is(e.target) && $tpc.has(e.target).length === 0) {
           NioApp.Toggle.removed($toggleCurrent.data('target'), attr);
           toggleCurrent = false;
         }
@@ -288,7 +280,7 @@
       }
     });
     $win.on('resize', function () {
-      if ((NioApp.Win.width < _break.xl || NioApp.Win.width < toggleBreak) && !NioApp.State.isMobile) {
+      if (NioApp.Win.width < _break.xl || NioApp.Win.width < toggleBreak) {
         NioApp.Toggle.removed($toggle.data('target'), attr);
       }
     });
@@ -298,9 +290,7 @@
   NioApp.sbCompact = function () {
     var toggle = '.nk-nav-compact',
         $toggle = $(toggle),
-        $content = $('[data-content]'),
-        $sidebar = $('.' + _sidebar),
-        $sidebar_body = $('.' + _sidebar + '-body');
+        $content = $('[data-content]');
     $toggle.on('click', function (e) {
       e.preventDefault();
       var $self = $(this),
@@ -308,20 +298,6 @@
           $self_content = $('[data-content=' + get_target + ']');
       $self.toggleClass('compact-active');
       $self_content.toggleClass('is-compact');
-
-      if (!$self_content.hasClass('is-compact')) {
-        $self_content.removeClass('has-hover');
-      }
-    });
-    $sidebar_body.on('mouseenter', function (e) {
-      if ($sidebar.hasClass('is-compact')) {
-        $sidebar.addClass('has-hover');
-      }
-    });
-    $sidebar_body.on('mouseleave', function (e) {
-      if ($sidebar.hasClass('is-compact')) {
-        $sidebar.removeClass('has-hover');
-      }
     });
   }; // Animate FormSearch @v1.0
 
@@ -560,7 +536,7 @@
       responsive: {
         details: true
       },
-      buttons: ['copy', 'excel', 'csv', 'pdf', 'colvis']
+      buttons: ['copy', 'excel', 'csv', 'pdf']
     });
     $.fn.DataTable.ext.pager.numbers_length = 7;
   }; // BootStrap Extended
@@ -581,14 +557,14 @@
       $dMenu.each(function () {
         var $self = $(this);
 
-        if ($self.hasClass('dropdown-menu-right') && !$self.hasClass('dropdown-menu-center')) {
-          $self.prev('[data-toggle="dropdown"]').dropdown({
+        if ($self.hasClass('dropdown-menu-end') && !$self.hasClass('dropdown-menu-center')) {
+          $self.prev('[data-bs-toggle="dropdown"]').dropdown({
             popperConfig: {
               placement: 'bottom-start'
             }
           });
-        } else if (!$self.hasClass('dropdown-menu-right') && !$self.hasClass('dropdown-menu-center')) {
-          $self.prev('[data-toggle="dropdown"]').dropdown({
+        } else if (!$self.hasClass('dropdown-menu-end') && !$self.hasClass('dropdown-menu-center')) {
+          $self.prev('[data-bs-toggle="dropdown"]').dropdown({
             popperConfig: {
               placement: 'bottom-end'
             }
@@ -613,7 +589,7 @@
         modal.find('[href="' + tg_tab + '"]').tab('show');
       } else if (modal) {
         var tabdef = modal.find('.nk-nav.nav-tabs');
-        var link = $(tabdef[0]).find('[data-toggle="tab"]');
+        var link = $(tabdef[0]).find('[data-bs-toggle="tab"]');
         $(link[0]).tab('show');
       }
     });
@@ -724,7 +700,6 @@
   };
 
   NioApp.Select2.init = function () {
-    // NioApp.Select2('.select');
     NioApp.Select2('.js-select2');
   }; // Slick Slider @v1.0.1
 

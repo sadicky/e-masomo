@@ -5,11 +5,20 @@
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
                             <div class="nk-header-brand d-xl-none">
-                                <a href="html/index.html" class="logo-link">
-                                    <img class="logo-light logo-img" src="assets/images/logo.png" srcset="assets/images/logo2x.png 2x" alt="logo">
-                                    <img class="logo-dark logo-img" src="assets/images/logo-dark.png" srcset="assets/images/logo-dark2x.png 2x" alt="logo-dark">
+                                <a href="<?=WEBROOT?>Dashboard" class="logo-link">
+                                <img width="200px" src="assets/public/images/logo-dark-text.png" srcset="assets/public/images/logo-dark-text.png 5x" alt="logo">
                                 </a>
                             </div><!-- .nk-header-brand -->
+                            <div class="nk-header-search ms-3 ms-xl-0 form-control-wrap">
+                            <div class="col-md-4">
+                                    <select class="form-select js-select2"  id="aa" name="aa" >
+                                        <option value="">Promotions</option>
+                                            <?php foreach ($getPromos as $dep) {?>
+                                                <option value='<?=$dep->promo_id?>'><?=$dep->promo?></option>				
+                                            <?php } ?>
+                                    </select> 
+                                </div>
+                             </div><!-- .nk-header-news -->
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
                                     <li class="dropdown user-dropdown">

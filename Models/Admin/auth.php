@@ -4,7 +4,7 @@ $db = getConnection();
 $msg="";
 $username=isset($_POST['username'])?$_POST['username']:""; 
 $pwd=isset($_POST['pwd'])?$_POST['pwd']:""; 
-
+if(isset($_POST['login'])){
   $sql = $db->prepare("SELECT * FROM tbl_users WHERE statut='1' and username= :username");
   $sql->bindValue('username',$username);
   $sql->execute();
@@ -28,6 +28,7 @@ $pwd=isset($_POST['pwd'])?$_POST['pwd']:"";
       $msg="<strong style='color:red'>Error</strong>: L'adresse email et le mot de passe sont incorrect ";
     }
   }else{
-      $msg="Error 403: Verifiez si ce Compte est activé, SVP!";
+      $msg="<strong style='color:red'>Erreur:</strong> Mot de passe incorrect";
   }
+}
 ?>

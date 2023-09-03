@@ -4,6 +4,7 @@ define('WEBROOT',str_replace('index.php', "", $_SERVER['SCRIPT_NAME']));
 define('ROOT',str_replace('index.php', "", $_SERVER['SCRIPT_FILENAME']));
 
 include 'Ctrl/Admin.php';
+include 'Ctrl/Public.php';
 // var_dump($lang);die();
 if(isset($_GET['p'])){
 	$params = explode('/', $_GET['p']); 
@@ -28,49 +29,73 @@ if(isset($_GET['p'])){
 	{
 		Dashboard();
 	}
-	else if($_GET['p']=='brands')
+	else if($_GET['p']=='promo')
 	{
-		Brands();
+		Promo();
 	}
-	else if($_GET['p']=='devices')
+	else if($_GET['p']=='Home')
 	{
-		Devices();
+		Home();
 	}
-	else if($_GET['p']=='defects')
+	else if($_GET['p']=='dep')
 	{
-		Defect();
+		Dep();
+	}
+	else if($_GET['p']=='classes')
+	{
+		Classe();
+	}
+	else if($_GET['p']=='profs')
+	{
+		Profs();
+	}
+	else if($_GET['p']=='profdet')
+	{
+		profDet();
+	}
+	else if($_GET['p']=='etudiants')
+	{
+		Etudiants();
+	}
+	else if($_GET['p']=='MyDashboard')
+	{
+		MyDashboard();
+	}
+	else if($_GET['p']=='coursdet')
+	{
+		coursDet();
+	}
+	else if($_GET['p']=='cours')
+	{
+		Cours();
 	}
 	else if($_GET['p']=='users')
 	{
 		Users();
 	}
-	else if($_GET['p']=='status')
+	else if($_GET['p']=='about')
 	{
-		Status();
+		About();
 	}
-	else if($_GET['p']=='technicians')
+	else if($_GET['p']=='plogin')
 	{
-		Technicians();
+		PLogin();
 	}
-	else if($_GET['p']=='marketters')
+	else if($_GET['p']=='register')
 	{
-		Marketters();
+		Register();
 	}
-	else if($_GET['p']=='orders')
+	else if($_GET['p']=='verification')
 	{
-		Orders();
+		Verify();
 	}
 	else if($_GET['p']=='logout')
 	{
 		Logout();
 	}
-	else if($_GET['p']=='neworder')
+	else if($_GET['p']=='plogout')
 	{
-		NewOrder();
-	}
-	else if($_GET['p']=='order')
-	{
-		Order();
+		PLogout();
 	}
 	//pour la page non trouvee
 	else{
@@ -78,6 +103,6 @@ if(isset($_GET['p'])){
 	}	
 }
 else{
-	login();
+	Home();
 }
 ?>

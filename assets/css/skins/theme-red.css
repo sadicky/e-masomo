@@ -37,6 +37,12 @@
 .is-dark .nk-menu-link {
   color: #8699b2;
 }
+.is-dark .nk-menu-link:hover {
+  background: #172641;
+}
+.is-dark .active > .nk-menu-link {
+  background: #172641;
+}
 .is-dark .nk-menu-icon {
   color: #9faec2;
 }
@@ -49,16 +55,7 @@
 .is-dark .nk-menu-link:hover .nk-menu-icon, .is-dark .nk-menu-item.active > .nk-menu-link .nk-menu-icon, .is-dark .nk-menu-item.current-menu > .nk-menu-link .nk-menu-icon {
   color: #e8757d;
 }
-.is-dark .nk-news-icon .icon {
-  color: #e14954;
-}
-.is-dark .nk-news-text .icon {
-  color: #8094ae;
-}
-.is-dark .nk-news-text p span {
-  color: rgba(128, 148, 174, 0.9);
-}
-.is-dark .user-name, .is-dark .nk-news-text p {
+.is-dark .user-name {
   color: #90a1b8;
 }
 .is-dark .nk-quick-nav-icon {
@@ -68,6 +65,12 @@
 .is-theme .nk-menu-link {
   color: #f4b6bb;
 }
+.is-theme .nk-menu-link:hover {
+  background: #752e2e;
+}
+.is-theme .active > .nk-menu-link {
+  background: #752e2e;
+}
 .is-theme .nk-menu-icon {
   color: #f9d9dc;
 }
@@ -75,16 +78,13 @@
   color: #f7cccf;
   background: #833333;
 }
-.is-theme .nk-news-icon .icon {
-  color: #ec8b92;
-}
-.is-theme .nk-news-text .icon, .is-theme .nk-quick-nav-icon, .is-theme .overline-title {
+.is-theme .nk-quick-nav-icon, .is-theme .overline-title {
   color: #f5bfc3;
 }
-.is-theme .nk-news-text p span, .is-theme .nk-menu-heading .overline-title {
+.is-theme .nk-menu-heading .overline-title {
   color: rgba(245, 191, 195, 0.8);
 }
-.is-theme .user-name, .is-theme .nk-news-text p {
+.is-theme .user-name {
   color: #f8d5d8;
 }
 
@@ -92,7 +92,7 @@
 .nav-tabs .nav-link:after,
 .progress-bar, .dot-primary,
 .alert-fill.alert-primary,
-.badge-primary,
+.bg-primary,
 .icon-circle,
 .noUi-connect,
 .nk-msg-menu-item a:after,
@@ -109,12 +109,12 @@
   background: #662828;
 }
 
-.user-avatar, [class^=user-avatar]:not([class*=-group]) {
-  background: #e8757d;
+.is-dark .nk-wg7-title, .is-dark .nk-wg7-note {
+  color: #f5bfc3;
 }
 
-.nk-news-item:hover .nk-news-text .icon {
-  color: #e8757d;
+.user-avatar, [class^=user-avatar]:not([class*=-group]) {
+  background: #e8757d;
 }
 
 .nk-menu-link:hover,
@@ -166,7 +166,6 @@
 .form-clip,
 .form-text-hint,
 .search-submit:hover,
-.nk-news-icon .icon,
 .attach-item .icon,
 .attach-download:hover span,
 .nk-reply-meta-info .whom,
@@ -174,17 +173,15 @@
 .nk-msg-menu-item a:hover,
 .nk-msg-menu-item.active a,
 .user-balance,
-.user-avatar[class*=-primary-dim],
-.nk-order-ovwg-data.sell .amount,
-.nk-order-ovwg-data.sell .title .icon,
-.nk-wg-action-content p strong, a,
+.user-avatar[class*=-primary-dim], a,
 .dropzone .dz-message-text span,
 .nk-switch-icon.active,
 .link-list-plain a .icon,
 .chat-upload-option a,
 .is-unread .chat-context .status,
 .add-opt:hover .sub-text, .add-opt:hover .icon,
-.icon[class*=bg-primary-dim] {
+.icon[class*=bg-primary-dim],
+.nk-tb-list .tb-asterisk a {
   color: #e14954;
 }
 
@@ -216,7 +213,7 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
   background-color: #d42330 !important;
 }
 
-.bg-primary-dim, .dual-listbox .dual-listbox__item:active, .dual-listbox .dual-listbox__item.dual-listbox__item--selected {
+.bg-primary-dim {
   background-color: #fcedee !important;
 }
 
@@ -230,6 +227,8 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
 }
 
 .alert-pro.alert-primary, .bg-primary,
+.sp-package-choose:checked ~ label,
+.plan-control:checked + .plan-item-card,
 .form-control:focus,
 .form-control.focus,
 .custom-file-input:focus ~ .custom-file-label,
@@ -446,7 +445,7 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
   background-color: #fcedee;
 }
 
-.is-theme .nk-sidebar-footer, .is-theme .nk-sidebar-profile-fixed {
+.is-theme .nk-sidebar-footer, .nk-apps-sidebar.is-theme, .is-theme .nk-sidebar-profile-fixed {
   background: #5f2525;
   border-color: #833333;
 }

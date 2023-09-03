@@ -24,94 +24,100 @@
     //Fonction de la page non trouvée
 	function Dashboard(){
 		if(@$_SESSION['logged']){
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
 			include('Vues/Admin/home.php');
 		}else{			
 			include('Vues/Admin/error500.php');
 		}
 	}
 
-	function Brands(){
+	function Promo(){
 		if(@$_SESSION['logged']){
-			require_once('Models/Admin/brand.class.php');
-			$brand = new Brand();	
-			$getBrands = $brand->getBrands();	
-			include('Vues/Admin/brands.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
+			include('Vues/Admin/promo.php');
 		}else{			
-				include('Vues/Admin/error500.php');
-			}
+			include('Vues/Admin/error500.php');
+		}
 	}
 
-	function Devices(){
+	function Dep(){
 		if(@$_SESSION['logged']){
-			require_once('Models/Admin/brand.class.php');
-			require_once('Models/Admin/device.class.php');
-			$brand = new Brand();		
-			$device = new Device();	
-			$getBrands = $brand->getBrands();
-			$getDevices = $device->getDevices();
-			include('Vues/Admin/devices.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
+			require_once('Models/Admin/dep.class.php');
+			$dep = new Dep();	
+			$getDeps = $dep->getDeps();
+			include('Vues/Admin/dep.php');
 		}else{			
-				include('Vues/Admin/error500.php');
-			}
-	}
-	
-	function Status(){
-		if(@$_SESSION['logged']){
-			require_once('Models/Admin/status.class.php');
-			$status = new Status();	
-			$getStatus = $status->getStatus();	
-			include('Vues/Admin/status.php');
-		}else{			
-				include('Vues/Admin/error500.php');
-			}
+			include('Vues/Admin/error500.php');
+		}
 	}
 
-	function Technicians(){
-		if(@$_SESSION['logged']){
-			require_once('Models/Admin/tech.class.php');
-			$tech = new Technician();	
-			$getTechnicians = $tech->getTechnicians();	
-			include('Vues/Admin/technicians.php');
-		}else{			
-				include('Vues/Admin/error500.php');
-			}
-	}
 	
-	function Marketters(){
+	function Classe(){
 		if(@$_SESSION['logged']){
-			require_once('Models/Admin/market.class.php');
-			$market = new Marketter();	
-			$getMarketters = $market->getMarketters();	
-			include('Vues/Admin/marketters.php');
+			require_once('Models/Admin/classe.class.php');
+			require_once('Models/Admin/dep.class.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
+			$dep = new Dep();
+			$classe = new Classe();		
+			$getDeps = $dep->getDeps();
+			$getClasses = $classe->getClasses();
+			include('Vues/Admin/classe.php');
 		}else{			
-				include('Vues/Admin/error500.php');
-			}
-	}
-	
-	function Orders(){
-		if(@$_SESSION['logged']){
-			include 'Models/Admin/barcode.php';
-			require_once('Models/Admin/order.class.php');
-			require_once('Models/Admin/brand.class.php');
-			require_once('Models/Admin/device.class.php');
-			require_once('Models/Admin/defect.class.php');
-			$defects = new Defect();		
-			$device = new Device();	
-			$brand = new Brand();	
-			$orders = new Repair();	
-			$getDefects = $defects->getDefects();
-			$getDevices = $device->getDevices();
-			$getBrands = $brand->getBrands();
-			$getOrders = $orders->getOrders();	
-			include('Vues/Admin/orders.php');
-		}else{			
-				include('Vues/Admin/error500.php');
-			}
+			include('Vues/Admin/error500.php');
+		}
 	}
 
+	
+	function Profs(){
+		if(@$_SESSION['logged']){
+			require_once('Models/Admin/classe.class.php');
+			require_once('Models/Admin/prof.class.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
+			$classe = new Classe();	
+			$prof = new Prof();	
+			$getProfs = $prof->getProfs();
+			include('Vues/Admin/profs.php');
+		}else{			
+			include('Vues/Admin/error500.php');
+		}
+	}
+
+	
+	
+	function Etudiants(){
+		if(@$_SESSION['logged']){
+			require_once('Models/Admin/classe.class.php');
+			require_once('Models/Admin/etudiant.class.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
+			$classe = new Classe();	
+			$etudiants = new Etudiant();	
+			$getEtudiants = $etudiants->getEtudiants();
+			include('Vues/Admin/etudiants.php');
+		}else{			
+			include('Vues/Admin/error500.php');
+		}
+	}
+
+	
 	function Users(){
 		if(@$_SESSION['logged']){
 			require_once('Models/Admin/user.class.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
 			$users = new User();	
 			$getUsers = $users->getUsers();
 			$getRoles = $users->getRoles();
@@ -121,65 +127,69 @@
 			}
 	}
 
-	function Defect(){
+	
+	
+	function profDet(){
 		if(@$_SESSION['logged']){
-			require_once('Models/Admin/defect.class.php');
-			require_once('Models/Admin/device.class.php');
-			$defects = new Defect();		
-			$device = new Device();	
-			$getDefects = $defects->getDefects();
-			$getDevices = $device->getDevices();
-			include('Vues/Admin/defects.php');
+			require_once('Models/Admin/classe.class.php');
+			require_once('Models/Admin/prof.class.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
+			$classe = new Classe();	
+			$prof = new Prof();	
+			$id=$_GET['id'];
+			$getPi = $prof->getProfId($id);
+			$getPc = $prof->getProfCoursId2($id);
+			include('Vues/Admin/profdet.php');
 		}else{			
-				include('Vues/Admin/error500.php');
-			}
+			include('Vues/Admin/error500.php');
+		}
 	}
 
-	function NewOrder(){
+	function coursDet(){
 		if(@$_SESSION['logged']){
-			require_once('Models/Admin/order.class.php');
-			require_once('Models/Admin/brand.class.php');
-			require_once('Models/Admin/device.class.php');
-			require_once('Models/Admin/defect.class.php');
-			require_once('Models/Admin/tech.class.php');
-			$tech = new Technician();	
-			$defects = new Defect();		
-			$device = new Device();	
-			$brand = new Brand();	
-			$orders = new Repair();	
-			$getDefects = $defects->getDefects();
-			$getDevices = $device->getDevices();
-			$getBrands = $brand->getBrands();
-			$getOrders = $orders->getOrders();
-			$getTechnicians = $tech->getTechnicians();
-			include('Vues/Admin/neworder.php');
+			require_once('Models/Admin/classe.class.php');
+			require_once('Models/Admin/prof.class.php');
+			require_once('Models/Admin/cours.class.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
+			$classe = new Classe();	
+			$prof = new Prof();	
+			$cours = new Cours();	
+			$id=$_GET['id'];
+			$getC = $cours->getCoursClasse2($id);
+			include('Vues/Admin/coursdet.php');
 		}else{			
-				include('Vues/Admin/error500.php');
-			}
+			include('Vues/Admin/error500.php');
+		}
 	}
+
 
 	
-	function Order(){
+	function Cours(){
 		if(@$_SESSION['logged']){
-			include 'Models/Admin/barcode.php';
-			require_once('Models/Admin/order.class.php');
-			require_once('Models/Admin/brand.class.php');
-			require_once('Models/Admin/device.class.php');
-			require_once('Models/Admin/defect.class.php');	
-			$id = $_GET['id'];
-			$defects = new Defect();		
-			$device = new Device();	
-			$brand = new Brand();	
-			$orders = new Repair();	
-			$getDefects = $defects->getDefects();
-			$getDevices = $device->getDevices();
-			$getBrands = $brand->getBrands();
-			$order = $orders->getOrder($id);	
-			include('Vues/Admin/order.php');
+			require_once('Models/Admin/classe.class.php');
+			require_once('Models/Admin/cours.class.php');
+			require_once('Models/Admin/dep.class.php');
+			require_once('Models/Admin/promo.class.php');
+			$promo = new Promo();	
+			$getPromos = $promo->getPromos();
+			$classe = new Classe();	
+			$cours = new Cours();
+			$dep = new Dep();
+		   $getCours = $cours->getsCours();	
+		   $getClasses = $classe->getClasses();	
+		   $getDeps = $dep->getDeps();	
+			// $id=$_GET['id'];
+			// $getPi = $prof->getProfId($id);
+			include('Vues/Admin/cours.php');
 		}else{			
-				include('Vues/Admin/error500.php');
-			}
+			include('Vues/Admin/error500.php');
+		}
 	}
+
 
 
 

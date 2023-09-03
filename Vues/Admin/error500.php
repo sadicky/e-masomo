@@ -14,7 +14,7 @@ include('Public/includes/header.php');
                         <div class="nk-block-content nk-error-ld text-center">
                             <h1 class="nk-error-head">500</h1>
                             <h3 class="nk-error-title">Not Connected</h3>
-                           <a href="<?=WEBROOT?>login" class="btn btn-lg btn-primary mt-2">Login</a>
+                           <a href="<?=WEBROOT?>" class="btn btn-lg btn-primary mt-2">Accueil</a>
                         </div>
                     </div><!-- .nk-block -->
                 </div>

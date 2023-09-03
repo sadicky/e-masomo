@@ -17,12 +17,6 @@ include('Public/includes/header.php');
                                 <a href="#" class="toggle btn-white btn btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
                             </div>
                             <div class="nk-block nk-block-middle nk-auth-body">
-                                <div class="brand-logo pb-5">
-                                    <a href="#" class="logo-link">
-                                        <img class="logo-light logo-img logo-img-lg" src="assets/images/logo.png" srcset="assets/images/logo2x.png 2x" alt="logo">
-                                        <img class="logo-dark logo-img logo-img-lg" src="assets/images/logo-dark.png" srcset="assets/images/logo-dark2x.png 2x" alt="logo-dark">
-                                    </a>
-                                </div>
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
                                         <h5 class="nk-block-title">Sign-In</h5>
@@ -50,14 +44,12 @@ include('Public/includes/header.php');
                                         </div>
                                     </div><!-- .form-group -->
                                     <div class="form-group">
-                                        <button class="btn btn-lg btn-primary btn-block">Sign in</button>
+                                        <button class="btn btn-lg btn-primary btn-block" name="login">Sign in</button>
                                     </div>
                                 <div>
                                     <?php 
-                                    if (isset($msg)) {
                                         // code...
                                         echo $msg;
-                                    }
                                      ?>
                                 </div>
                                 </form>
@@ -66,11 +58,11 @@ include('Public/includes/header.php');
                         </div><!-- .nk-split-content -->
                         <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-toggle-body="true" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
                             <div class="slider-wrap w-100 w-max-550px p-3 p-sm-5 m-auto">
-                                <div class="slider-init" data-slick='{"dots":true, "arrows":false}'>
+                                <div class="slider-init">
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
                                             <div class="nk-feature-img">
-                                                <img class="round" src="assets/images/slides/p" srcset="assets/images/slides/promo-a2x.png 2x" alt="">
+                                                <img class="round" src="assets/images/emasomo.png" srcset="assets/images/emasomo.png 5x" alt="">
                                             </div>
                                         </div>
                                     </div><!-- .slider-item -->

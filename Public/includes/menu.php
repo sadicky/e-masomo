@@ -12,40 +12,63 @@
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-heading">
-                                    <h6 class="overline-title text-primary-alt">Workshop</h6>
-                                </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>orders" class="nk-menu-link">
+                                    <a href="<?=WEBROOT?>etudiants" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                                        <span class="nk-menu-text">Etudiant</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="<?=WEBROOT?>profs" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-property-alt"></em></span>
-                                        <span class="nk-menu-text">Repair Orders</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-heading">
-                                    <h6 class="overline-title text-primary-alt">Data Entries</h6>
-                                </li><!-- .nk-menu-heading -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>brands" class="nk-menu-link ">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-apple-pay"></em></span>
-                                        <span class="nk-menu-text">Marques</span>
+                                        <span class="nk-menu-text">Professeurs</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>devices" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-mobile"></em></span>
-                                        <span class="nk-menu-text">Appareils Réparables</span>
+                                    <a href="<?=WEBROOT?>parents" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
+                                        <span class="nk-menu-text">Parents</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>defects" class="nk-menu-link ">
+                                    <a href="<?=WEBROOT?>cours" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
+                                        <span class="nk-menu-text">Cours</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></span>
+                                        <span class="nk-menu-text">Academiques</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="<?=WEBROOT?>dep" class="nk-menu-link"><span class="nk-menu-text">Département</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="<?=WEBROOT?>classes" class="nk-menu-link"><span class="nk-menu-text">Classe</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="<?=WEBROOT?>promo" class="nk-menu-link"><span class="nk-menu-text">Promotion</span></a>
+                                        </li>
+                                    </ul><!-- .nk-menu-sub -->
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="<?=WEBROOT?>docs" class="nk-menu-link ">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-file"></em></span>
+                                        <span class="nk-menu-text">Doc. téléchargeables</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="<?=WEBROOT?>comms" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-send"></em></span>
+                                        <span class="nk-menu-text">Communiqués</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="<?=WEBROOT?>devoirs" class="nk-menu-link ">
                                         <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                                        <span class="nk-menu-text">Défauts Réparables</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>status" class="nk-menu-link ">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-grid-alt"></em></span>
-                                        <span class="nk-menu-text">Status de Réparation</span>
+                                        <span class="nk-menu-text">Devoirs téléchargés</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-heading">
@@ -61,48 +84,6 @@
                                     <a href="<?=WEBROOT?>roles" class="nk-menu-link ">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>
                                         <span class="nk-menu-text">Roles Utilisateurs</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>technicians" class="nk-menu-link ">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></span>
-                                        <span class="nk-menu-text">Techniciens</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>marketters" class="nk-menu-link ">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-network"></em></span>
-                                        <span class="nk-menu-text">Marketeurs</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-sign-usd"></em></span>
-                                        <span class="nk-menu-text">Commissions</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="<?=WEBROOT?>rapports" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-menu-circled"></em></span>
-                                        <span class="nk-menu-text">Rapports</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>faqs" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-table-view"></em></span>
-                                        <span class="nk-menu-text">FAQS</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="<?=WEBROOT?>settings" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
-                                        <span class="nk-menu-text">Parametres</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="<?=WEBROOT?>languages" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-globe"></em></span>
-                                        <span class="nk-menu-text">Langues</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                             </ul><!-- .nk-menu -->

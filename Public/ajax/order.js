@@ -34,17 +34,17 @@ $(document).ready(function () {
           }
         });
 
-        $('.view_data').click(function() {
+        $('.viewpay').click(function() {
             var id = $(this).attr("id");
             $.ajax({
-              url: "Public/script/viewtechbeforedit.php",
+              url: "Public/script/viewpay.php",
               method: "post",
               data: {
                 id: id
               },
               success: function(data) {
-                $('#tech_detail').html(data);
-                $('#edit-tech').modal("show");
+                $('#pay_detail').html(data);
+                $('#add-pay').modal("show");
               }
             });
           });
