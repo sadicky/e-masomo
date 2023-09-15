@@ -55,14 +55,15 @@ Class Prof
         }
          return $tbP;
     }
-
+    
     public function getProfCoursId2($id)
     {
         $db = getConnection();
-        $statement = $db->prepare("SELECT  tbl_cours.cours_id as cours_id,tbl_cours.cours as cours,tbl_classes.classe as classe,tbl_promo.promo as promo
-         FROM tbl_profcours,tbl_cours,tbl_promo,tbl_classes,tbl_prof 
-         WHERE  tbl_profcours.prof=tbl_prof.prof_id AND tbl_profcours.cours=tbl_cours.cours_id AND tbl_profcours.promo=tbl_promo.promo_id
-        AND tbl_cours.classe=tbl_classes.classe_id AND tbl_prof.mat=?");
+        $statement = $db->prepare("SELECT tbl_classes.classe_id as classe_id, tbl_cours.cours_id as cours_id,tbl_cours.cours as cours,tbl_classes.classe as classe,
+        tbl_promo.promo as promo,tbl_dep.dep as dep,tbl_promo.promo_id as promo_id
+        FROM tbl_dep,tbl_profcours,tbl_cours,tbl_promo,tbl_classes,tbl_prof
+        WHERE tbl_profcours.prof=tbl_prof.prof_id AND tbl_profcours.cours=tbl_cours.cours_id AND tbl_profcours.promo=tbl_promo.promo_id
+       AND tbl_cours.classe=tbl_classes.classe_id AND tbl_classes.dep_id=tbl_dep.dep_id and tbl_prof.mat=?");
         $statement->execute([$id]);
         $tbP = array();
         while($data =  $statement->fetchObject()){
@@ -78,6 +79,8 @@ Class Prof
         $res = $q->fetchObject();
         return $res;
     } 
+
+
     public function getProfEmail($email)
     {
         $db = getConnection();
@@ -87,17 +90,34 @@ Class Prof
         return $tbP;
     }
 
-    
+    //Profs cours Classe 
+    public function getCoursClasseProf($idclasse,$idprof){
+        $db = getConnection();
+        $all = $db->prepare("SELECT tbl_cours.cours_id as cours_id,tbl_cours.cours as cours,tbl_dep.dep as dep,
+        tbl_classes.classe as classe, tbl_cours.semester as semester,tbl_prof.noms
+           from tbl_cours,tbl_classes,tbl_dep,tbl_profcours,tbl_prof
+           where tbl_cours.classe = tbl_classes.classe_id
+           and tbl_profcours.prof=tbl_prof.prof_id and tbl_cours.cours_id = tbl_profcours.cours
+           AND tbl_classes.dep_id=tbl_dep.dep_id And tbl_classes.classe_id=? and tbl_prof.mat=?");
+        $all->execute(array($idclasse,$idprof));
+        $tb = array();
+        while($data = $all->fetchObject())
+        {
+            $tb[] = $data;
+        }
+        return $tb;
+        }
   
     public function getProfCoursId($id)
     {
         $db = getConnection();
-        $matP = $db->prepare("SELECT tbl_cours.cours_id as cours_id,tbl_cours.cours as cours,tbl_classes.classe as classe,tbl_promo.promo as promo
-        FROM tbl_profcours,tbl_cours,tbl_promo,tbl_classes,tbl_prof 
-        WHERE  tbl_profcours.prof=tbl_prof.prof_id AND tbl_profcours.cours=tbl_cours.cours_id AND tbl_profcours.promo=tbl_promo.promo_id
-       AND tbl_cours.classe=tbl_classes.classe_id AND tbl_prof.mat=?");
+        $matP = $db->prepare("SELECT tbl_classes.classe_id as classe_id, tbl_cours.cours_id as cours_id,tbl_cours.cours as cours,tbl_classes.classe as classe,
+        tbl_promo.promo as promo,tbl_dep.dep as dep,tbl_promo.promo_id as promo_id
+        FROM tbl_dep,tbl_profcours,tbl_cours,tbl_promo,tbl_classes,tbl_prof
+        WHERE tbl_profcours.prof=tbl_prof.prof_id AND tbl_profcours.cours=tbl_cours.cours_id AND tbl_profcours.promo=tbl_promo.promo_id
+       AND tbl_cours.classe=tbl_classes.classe_id AND tbl_classes.dep_id=tbl_dep.dep_id and tbl_prof.mat=?");
         $matP->execute(array($id));
-        $res = $matP->fetchAll(PDO::FETCH_OBJ);
+        $res = $matP->fetchObject();
         return $res;
     }
     
@@ -111,36 +131,5 @@ Class Prof
     }
     
     
-    public function deleteMarket($id){
-        $db = getConnection();
-        $sql =$db->prepare( "DELETE FROM tbl_marketters WHERE market_id=?");
-        $ok = $sql->execute(array($id));
-       return $ok;
-    }
-
-    public function activMarket($id)
-    {
-    $db = getConnection();
-    $req=$db->prepare("UPDATE tbl_marketters SET statut='1' WHERE market_id=?");
-    $d=$req->execute(array($id));
-    return $d;
-    }
-    public function desactivMarket($id)
-    {
-    $db = getConnection();
-    $req=$db->prepare("UPDATE tbl_marketters SET statut='0' WHERE market_id=?");
-    $d=$req->execute(array($id));
-    return $d;
-    }
-    
-    public function updateMarket($names,$phone,$id){
-            $this->names=$names;
-            $this->phone=$phone;
-            $this->id=$id;
-            $db = getConnection();
-            $update = $db->prepare("UPDATE tbl_marketters SET names=?, phone=? WHERE market_id =?");
-            $ok = $update->execute(array($names,$phone,$id)) or die(print_r($update->errorInfo()));
-            return $ok;
-    }
 }
 ?>

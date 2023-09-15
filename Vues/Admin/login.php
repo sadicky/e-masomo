@@ -46,6 +46,7 @@ include('Public/includes/header.php');
                                     <div class="form-group">
                                         <button class="btn btn-lg btn-primary btn-block" name="login">Sign in</button>
                                     </div>
+                                     <a href="<?=WEBROOT?>loginprof" class="btn btn-lg btn-link">Etes-vous Professeur? </a> 
                                 <div>
                                     <?php 
                                         // code...

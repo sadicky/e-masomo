@@ -281,33 +281,35 @@ Class Etudiant
           return $res;
       }
       
-      //par ID
-      public function gettbl_etudiantsMat($id)
+      public function getEtudiantClasse($idc,$idas)
       {
           $db = getConnection();
-          $matP = $db->prepare("SELECT tbl_etudiants.ID as ID,classe.IDCLA as IDCLA,tbl_etudiants.IMAGE,  tbl_etudiants.ACCESS, tbl_etudiants.NOM, tbl_etudiants.PRENOM, tbl_etudiants.SEXE,tbl_etudiants.MATRICULE,
-          classe.CLASSE,options.OPT,section.SECTION,asco.AS,tbl_etudiants.TEL as TEL,tbl_etudiants.DOB as DOB FROM tbl_etudiants,asco,classe,options,section
-          WHERE tbl_etudiants.IDCLA=classe.IDCLA AND tbl_etudiants.IDAS=asco.ID and classe.IDOPT=options.IDOPT
-          AND options.IDSECT=section.IDSECT AND tbl_etudiants.MATRICULE=? LIMIT 1");
-          $matP->execute(array($id));
+          $matP = $db->prepare("SELECT tbl_etudiants.etudiant_id,tbl_etudiants.photo, tbl_classes.classe_id, tbl_etudiants.email,tbl_etudiants.tel,
+       tbl_etudiants.nom, tbl_etudiants.prenom, tbl_etudiants.sexe,tbl_etudiants.mat,tbl_classes.classe,tbl_promo.promo
+          FROM tbl_etudiants,tbl_promo,tbl_classes,tbl_dep
+          WHERE tbl_etudiants.classe=tbl_classes.classe_id AND tbl_etudiants.promo=tbl_promo.promo_id and tbl_classes.dep_id=tbl_dep.dep_id
+          and tbl_etudiants.access='1' AND tbl_etudiants.classe=? AND tbl_etudiants.promo=?");
+          $matP->execute(array($idc,$idas));
+          $tbP = $matP->fetchObject();
+           return $tbP;
+      }
+
+      public function getEtudiantClasse2($idc,$idas)
+      {
+          $db = getConnection();
+          $matP = $db->prepare("SELECT tbl_etudiants.etudiant_id,tbl_etudiants.photo, tbl_classes.classe_id, tbl_etudiants.email,tbl_etudiants.tel,
+       tbl_etudiants.nom, tbl_etudiants.prenom, tbl_etudiants.sexe,tbl_etudiants.mat,tbl_classes.classe,tbl_promo.promo
+          FROM tbl_etudiants,tbl_promo,tbl_classes,tbl_dep
+          WHERE tbl_etudiants.classe=tbl_classes.classe_id AND tbl_etudiants.promo=tbl_promo.promo_id and tbl_classes.dep_id=tbl_dep.dep_id
+          and tbl_etudiants.access='1' AND tbl_etudiants.classe=? AND tbl_etudiants.promo=?");
+          $matP->execute(array($idc,$idas));
           $tbP = array();
           while($data =  $matP->fetchObject()){
               $tbP[] = $data;
           }
            return $tbP;
       }
-      //par ID
-      public function gettbl_etudiantsId2($id)
-      {
-          $db = getConnection();
-          $matP = $db->prepare("SELECT tbl_etudiants.ID as ID,classe.IDCLA as IDCLA,tbl_etudiants.IMAGE,  tbl_etudiants.ACCESS, tbl_etudiants.NOM, tbl_etudiants.PRENOM, tbl_etudiants.SEXE,tbl_etudiants.MATRICULE,
-          classe.CLASSE,options.OPT,section.SECTION,asco.AS,tbl_etudiants.TEL as TEL,tbl_etudiants.DOB as DOB FROM tbl_etudiants,asco,classe,options,section
-          WHERE tbl_etudiants.IDCLA=classe.IDCLA AND tbl_etudiants.IDAS=asco.ID and classe.IDOPT=options.IDOPT
-          AND options.IDSECT=section.IDSECT AND tbl_etudiants.ID=? LIMIT 1");
-          $matP->execute(array($id));
-          $res = $matP->fetchObject();
-          return $res;
-      }
+
       public function gettbl_etudiantssClasse($idc,$idas)
       {
           $db = getConnection();
@@ -372,25 +374,7 @@ Class Etudiant
            return $tbP;
       }
    
-      public function gettbl_etudiantsClassesPM($idc,$idas)
-      {
-          $db = getConnection();
-          $matP = $db->prepare("SELECT tbl_etudiants.ID as ID,paiementmin.MONTANT as PMONTANT,paiementmin.BORD,
-          classe.IDCLA as IDCLA, tbl_etudiants.NOM, tbl_etudiants.PRENOM, tbl_etudiants.MATRICULE,paiementmin.DETAIL,
-          classe.CLASSE,options.OPT,section.SECTION,minerval.MONTANT as MONTANT
-          FROM tbl_etudiants,asco,classe,options,section,minerval,paiementmin
-          WHERE tbl_etudiants.IDCLA=classe.IDCLA AND tbl_etudiants.IDAS=asco.ID and classe.IDOPT=options.IDOPT 
-          AND paiementmin.IDEL = tbl_etudiants.ID AND paiementmin.IDAS=minerval.IDAA
-          AND paiementmin.IDM=minerval.IDM AND paiementmin.IDCL=classe.IDCLA AND minerval.IDAA=asco.ID
-          AND options.IDSECT=section.IDSECT and tbl_etudiants.ACCESS='1' AND tbl_etudiants.IDCLA=? AND tbl_etudiants.IDAS=?");
-          $matP->execute(array($idc,$idas));
-          $tbP = array();
-          while($data =  $matP->fetchObject()){
-              $tbP[] = $data;
-          }
-           return $tbP;
-      }
-  
+       
       public function deleteProf($idprof)
       {
           $db = getConnection();

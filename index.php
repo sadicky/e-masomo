@@ -5,6 +5,7 @@ define('ROOT',str_replace('index.php', "", $_SERVER['SCRIPT_FILENAME']));
 
 include 'Ctrl/Admin.php';
 include 'Ctrl/Public.php';
+include 'Ctrl/Prof.php';
 // var_dump($lang);die();
 if(isset($_GET['p'])){
 	$params = explode('/', $_GET['p']); 
@@ -24,10 +25,19 @@ if(isset($_GET['p'])){
 		Login();
 	}
 	
+	else if($_GET['p']=='loginprof')
+	{
+		LoginP();
+	}
 	//url pour le dashboard
 	else if($_GET['p']=='Dashboard')
 	{
 		Dashboard();
+	}
+	//url pour le dashboard
+	else if($_GET['p']=='DashboardProf')
+	{
+		DashboardProf();
 	}
 	else if($_GET['p']=='promo')
 	{
@@ -97,6 +107,22 @@ if(isset($_GET['p'])){
 	{
 		PLogout();
 	}
+
+	//profile prof
+	
+	else if($_GET['p']=='MyClassProf')
+	{
+		MyClassProf();
+	}
+	else if($_GET['p']=='MyClassCours')
+	{
+		MyClassCours();
+	}
+	else if($_GET['p']=='MatiereProf')
+	{
+		Matiere();
+	}
+
 	//pour la page non trouvee
 	else{
 		error404();
